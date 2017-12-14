@@ -35,15 +35,20 @@ class mitu extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(\App\Providers\Mitu\Serve $mitu)
     {
         //
         $model = env('MITU_MODEL');
 
         $this->info($model);
 
+
         $port = env('MITU_PORT');
         $this->info($port);
+
+//        $path =;
+        $this->info( $mitu->hello());
+
 
 
     }
