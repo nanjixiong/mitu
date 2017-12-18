@@ -4,21 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class mitu extends Command
+class Mitu extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'mitu:model';
+    protected $signature = 'mitu:start';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'set type server or client';
+    protected $description = 'start';
 
     /**
      * Create a new command instance.
@@ -35,21 +35,14 @@ class mitu extends Command
      *
      * @return mixed
      */
-    public function handle(\App\Providers\Mitu\Serve $mitu)
+    public function handle()
     {
         //
-        $model = env('MITU_MODEL');
+        $mitu = $this->laravel->make('Mitu');
+        $model = $this->ask("start model");
 
-        $this->info($model);
+        $mitu->Start($model);
 
-
-        $port = env('MITU_PORT');
-        $this->info($port);
-
-//        $path =;
-        $this->info( $mitu->hello());
-
-
-
+        $this->ask();
     }
 }

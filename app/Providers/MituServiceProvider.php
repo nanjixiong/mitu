@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Providers\Mitu\Serve;
+use App\Mitu\Mitu;
 use Illuminate\Support\ServiceProvider;
 
-class MituServeiceProvider extends ServiceProvider
+class MituServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -15,8 +15,6 @@ class MituServeiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        //        parent::boot();
-
     }
 
     /**
@@ -27,8 +25,8 @@ class MituServeiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->bind('mituserv', function () {
-            return new Serve();
+        $this->app->singleton('Mitu',function(){
+            return new Mitu();
         });
     }
 }
